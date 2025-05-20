@@ -10,8 +10,8 @@ from typing import List
 
 
 
+router = APIRouter(prefix="/tenant")
 
-router = APIRouter()
 
 # Dependency that ensures we have a tenant context and a current user from that tenant
 def tenant_user_required(
@@ -31,7 +31,7 @@ def tenant_login(credentials: schemas.LoginRequest,
                 tenant: Tenant = Depends(get_current_tenant)):
     """Tenant user login (at subdomain). If first time, prompt plan selection after login."""
     if tenant is None:
-        # If no tenant found in context, it means this endpoint was hit on base domain, which is wrong usage.
+        
         raise HTTPException(status_code=400, detail="Tenant login should be done on tenant subdomain")
     user = db.query(User).filter(User.email == credentials.email, User.tenant_id == tenant.id).first()
     if not user or not security.verify_password(credentials.password, user.password_hash):

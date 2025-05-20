@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "e7c14e11-eab2-4ddc-a308-404d068399c5",
+		"name": "fastapi-multitenant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23490465",
+		"_collection_link": "https://interstellar-equinox-237173.postman.co/workspace/Team-Workspace~3a2f8fc2-3455-4a31-8f0e-12975b67fb9d/collection/23490465-e7c14e11-eab2-4ddc-a308-404d068399c5?action=share&source=collection_link&creator=23490465"
+	},
+	"item": [
+		{
+			"name": "Superadmin Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"superadmin@example.com\",\r\n  \"password\": \"admin123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/superadmin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Plan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3ODk4NH0.zcIgtdqD0lYS8M-gVu83Ia-JHHFNPev3MfzELiQKnuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Basic\",\r\n  \"max_features\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/superadmin/plans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"plans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3ODk4NH0.zcIgtdqD0lYS8M-gVu83Ia-JHHFNPev3MfzELiQKnuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Basic\",\r\n  \"max_features\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/superadmin/plans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"plans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3ODk4NH0.zcIgtdqD0lYS8M-gVu83Ia-JHHFNPev3MfzELiQKnuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Company ABC\",\r\n  \"subdomain\": \"abc\",\r\n  \"admin_email\": \"admin@abc.com\",\r\n  \"admin_password\": \"adminpass\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/superadmin/tenants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Tenants",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3ODk4NH0.zcIgtdqD0lYS8M-gVu83Ia-JHHFNPev3MfzELiQKnuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/superadmin/tenants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users of a Tenant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3ODk4NH0.zcIgtdqD0lYS8M-gVu83Ia-JHHFNPev3MfzELiQKnuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://xyz.localhost:8000/superadmin/tenants/1/users",
+					"protocol": "http",
+					"host": [
+						"xyz",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"superadmin",
+						"tenants",
+						"1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoic3VwZXJhZG1pbiIsImV4cCI6MTc0Nzc3NTIxNX0.XrTIcmgOGfsffvgSuiQzc9de3tPZM1odl-QCbZGZJlA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@abc.com\",\r\n  \"password\": \"adminpass\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/login",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ0ZW5hbnRfaWQiOjEsImV4cCI6MTc0Nzc3OTA3Mn0.s4gaHih7m5wJj57QhROOpzAVORKYgbFi6eUBi3ImK8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plan_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/plans",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"plans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "select plan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ0ZW5hbnRfaWQiOjEsImV4cCI6MTc0Nzc3OTA3Mn0.s4gaHih7m5wJj57QhROOpzAVORKYgbFi6eUBi3ImK8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plan_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/plan/select",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"plan",
+						"select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ0ZW5hbnRfaWQiOjEsImV4cCI6MTc0Nzc3OTA3Mn0.s4gaHih7m5wJj57QhROOpzAVORKYgbFi6eUBi3ImK8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"user1@abc.com\",\r\n  \"name\": \"User One\",\r\n  \"password\": \"userpass\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/users",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Use Feature",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ0ZW5hbnRfaWQiOjEsImV4cCI6MTc0Nzc3OTA3Mn0.s4gaHih7m5wJj57QhROOpzAVORKYgbFi6eUBi3ImK8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"feature\": \"F2\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/features/use",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"features",
+						"use"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Billing Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ0ZW5hbnRfaWQiOjEsImV4cCI6MTc0Nzc3OTA3Mn0.s4gaHih7m5wJj57QhROOpzAVORKYgbFi6eUBi3ImK8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://abc.localhost:8000/tenant/billing/send",
+					"protocol": "http",
+					"host": [
+						"abc",
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tenant",
+						"billing",
+						"send"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

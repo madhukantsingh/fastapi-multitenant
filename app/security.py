@@ -5,7 +5,6 @@ import jwt  # PyJWT
 # Password hashing context (using bcrypt)
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Secret key for JWT (should be set via environment variable in production)
 from os import getenv
 SECRET_KEY = getenv("SECRET_KEY", "CHANGE_ME_SUPER_SECRET")
 ALGORITHM = "HS256"
