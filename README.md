@@ -1,4 +1,4 @@
-FastAPI Multitenant SaaS Application
+FastAPI Multitenant Application
 ====================================
 
 This project is a simplified multi-tenant backend built using FastAPI, Celery, MySQL, and Redis.
